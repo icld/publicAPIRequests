@@ -133,7 +133,13 @@ header h1.ready {
     right: 0;
     bottom: 0;
     left: 0;
+    /* opacity: 1; */
     background: rgba(0, 0, 0, 0.7);
+    transition: opacity 0.4s ease;
+}
+
+.modal-container.ready {
+    opacity: 0;
 }
 
 .modal {
@@ -147,6 +153,11 @@ header h1.ready {
     border-radius: 0.25em;
     border: 1px solid rgba(100, 100, 100, 0.3);
     transition: .4s ease-out;
+}
+
+.modal.ready {
+    transform: translateY(-125%);
+    opacity: 0;
 }
 
 .modal-close-btn {

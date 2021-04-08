@@ -83,8 +83,8 @@ gallery.addEventListener('click', e => {
 // })
 
 function generateModal(data) {
-    const modalHTML = `<div class="modal-container">
-<div class="modal">
+    const modalHTML = `<div class="modal-container ready">
+<div class="modal ready">
     <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
     <div class="modal-info-container">
         <img class="modal-img" src="${data.picture.large}" alt="profile picture">
@@ -98,15 +98,22 @@ function generateModal(data) {
     </div>
 </div>`;
     modalContainer.insertAdjacentHTML('beforeend', modalHTML)
+    const modal = document.querySelector('.modal')
+    const container = document.querySelector('.modal-container')
+    setTimeout(() => modal.classList.remove('ready'), 200)
+    setTimeout(() => container.classList.remove('ready'), 200)
     modalRemove()
 }
 
 function modalRemove() {
     const button = document.getElementById('modal-close-btn')
     const modalContainer = document.querySelector('.modal-container')
+    const modal = document.querySelector('.modal')
     button.addEventListener('click', e => {
         console.log('remove me')
-        modalContainer.remove()
+        modal.classList.add('ready')
+        modalContainer.classList.add('ready')
+        setTimeout(() => modalContainer.remove(), 300)
     })
 }
 
