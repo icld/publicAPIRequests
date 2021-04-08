@@ -27,7 +27,7 @@ fetch('https://randomuser.me/api/?page=1&results=12&seed=abc')
         profileData = data.results
         console.log(profileData);
         generateCard(profileData);
-        generateModal(profileData);
+        // generateModal(profileData);
     })
     .catch(error => console.log('Looks like there was a problem', error))
 
@@ -52,18 +52,27 @@ function generateCard(data) {
 </div>
 </div>`;
         gallery.insertAdjacentHTML('beforeend', galleryHTML);
-        // const cards = document.querySelectorAll('.card')
-        // cards.addEventListener('click', e => {
-        //     console.log('fart')
-        // })
+        const profileGrab = { profile }
+        return profileGrab
     });
 
 }
+const galleryCards = document.getElementsByClassName("card card")
 
 gallery.addEventListener('click', e => {
-
-    if (e.target.classList.contains('card')) {
-        console.log('fart')
+    const parent = gallery
+    const card = e.target.closest('.card')
+    const userEmail = card.querySelector('.card-text').textContent
+    if (e.target !== parent) {
+        console.log(card)
+        console.log(userEmail)
+        profileData.forEach(profile => {
+            // const newProf = profile
+            if (profile.email === userEmail) {
+                console.log(profile)
+                generateModal(profile)
+            }
+        })
     }
 })
 
@@ -74,24 +83,31 @@ gallery.addEventListener('click', e => {
 // })
 
 function generateModal(data) {
-    data.forEach(profile => {
-        const modalHTML = `<div class="modal-container" style="display: none;">
+    const modalHTML = `<div class="modal-container">
 <div class="modal">
     <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
     <div class="modal-info-container">
-        <img class="modal-img" src="${profile.picture.large}" alt="profile picture">
-        <h3 id="name" class="modal-name cap">}</h3>
-        <p class="modal-text">email</p>
-        <p class="modal-text cap">city</p>
+        <img class="modal-img" src="${data.picture.large}" alt="profile picture">
+        <h3 id="name" class="modal-name cap">${data.name.first} ${data.name.last}</h3>
+        <p class="modal-text">${data.email}</p>
+        <p class="modal-text cap">${data.location.city}</p>
         <hr>
-        <p class="modal-text">(555) 555-5555</p>
-        <p class="modal-text">123 Portland Ave., Portland, OR 97204</p>
-        <p class="modal-text">Birthday: 10/21/2015</p>
+        <p class="modal-text">${data.phone}</p>
+        <p class="modal-text">${data.location.street.number} ${data.location.street.name} , ${data.location.city}, ${data.location.state} ${data.location.postcode}</p>
+        <p class="modal-text">Birthday: ${data.dob.date.substring(0, 10)}</p>
     </div>
 </div>`;
-        modalContainer.insertAdjacentHTML('beforeend', modalHTML)
-    }
-    )
+    modalContainer.insertAdjacentHTML('beforeend', modalHTML)
+    modalRemove()
+}
+
+function modalRemove() {
+    const button = document.getElementById('modal-close-btn')
+    const modalContainer = document.querySelector('.modal-container')
+    button.addEventListener('click', e => {
+        console.log('remove me')
+        modalContainer.remove()
+    })
 }
 
 

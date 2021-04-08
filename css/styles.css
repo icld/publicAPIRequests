@@ -31,6 +31,12 @@ header h1 {
     font-size: 1.25em;
     color: rgba(50, 50, 50, 0.9);
     margin-top: 35px;
+    transition: transform .4s ease;
+}
+
+header h1.ready {
+    transform: translateX(-125%);
+    opacity: 0;
 }
 
 .search-input {
