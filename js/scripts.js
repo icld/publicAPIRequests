@@ -6,6 +6,7 @@ const modalContainer = document.createElement('div')
 body.appendChild(modalContainer)
 const gallery = document.querySelector('#gallery')
 let profileData = []
+let click = 0
 
 
 
@@ -64,6 +65,8 @@ gallery.addEventListener('click', e => {
     const parent = gallery
     const card = e.target.closest('.card')
     const userEmail = card.querySelector('.card-text').textContent
+    click++
+    console.log(click)
     if (e.target !== parent) {
         console.log(card)
         console.log(userEmail)
@@ -119,6 +122,13 @@ function modalHTML(data) {
         <p class="modal-text">Birthday: ${data.dob.date.substring(0, 10)}</p>
     </div>
 </div>`;
+    // if (click % 2 == 0) {
+    //     const container = document.querySelector('.modal', 'ready')
+    //     console.log(container)
+    //     container.classList.remove('ready')
+    //     container.classList.add('readyDown')
+    // }
+
     return modalHTML
 }
 

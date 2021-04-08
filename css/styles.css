@@ -160,6 +160,11 @@ header h1.ready {
     opacity: 0;
 }
 
+.modal.readyDown {
+    transform: translateY(125%);
+    opacity: 0;
+}
+
 .modal-close-btn {
     position: absolute;
     top: 15px;
