@@ -10,6 +10,7 @@ let profileData = []
 
 
 
+
 // SEARCH
 const searchContainer = document.querySelector('.search-container')
 const searchHTML = `<form action="#" method="get">
@@ -76,33 +77,18 @@ gallery.addEventListener('click', e => {
     }
 })
 
-// cards.forEach(card => {
-//     card.addEventListener('click', (e) => {
-//         console.log(e.target)
-//     })
-// })
 
 function generateModal(data) {
-    const modalHTML = `<div class="modal-container ready">
-<div class="modal ready">
-    <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
-    <div class="modal-info-container">
-        <img class="modal-img" src="${data.picture.large}" alt="profile picture">
-        <h3 id="name" class="modal-name cap">${data.name.first} ${data.name.last}</h3>
-        <p class="modal-text">${data.email}</p>
-        <p class="modal-text cap">${data.location.city}</p>
-        <hr>
-        <p class="modal-text">${data.phone}</p>
-        <p class="modal-text">${data.location.street.number} ${data.location.street.name} , ${data.location.city}, ${data.location.state} ${data.location.postcode}</p>
-        <p class="modal-text">Birthday: ${data.dob.date.substring(0, 10)}</p>
-    </div>
-</div>`;
-    modalContainer.insertAdjacentHTML('beforeend', modalHTML)
+    modalContainer.insertAdjacentHTML('beforeend', modalHTML(data))
+    addModal()
+    modalRemove()
+}
+
+function addModal() {
     const modal = document.querySelector('.modal')
     const container = document.querySelector('.modal-container')
     setTimeout(() => modal.classList.remove('ready'), 200)
     setTimeout(() => container.classList.remove('ready'), 200)
-    modalRemove()
 }
 
 function modalRemove() {
@@ -118,7 +104,23 @@ function modalRemove() {
 }
 
 
-
+function modalHTML(data) {
+    const modalHTML = `<div class="modal-container ready">
+<div class="modal ready">
+    <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
+    <div class="modal-info-container">
+        <img class="modal-img" src="${data.picture.large}" alt="profile picture">
+        <h3 id="name" class="modal-name cap">${data.name.first} ${data.name.last}</h3>
+        <p class="modal-text">${data.email}</p>
+        <p class="modal-text cap">${data.location.city}</p>
+        <hr>
+        <p class="modal-text">${data.phone}</p>
+        <p class="modal-text">${data.location.street.number} ${data.location.street.name} , ${data.location.city}, ${data.location.state} ${data.location.postcode}</p>
+        <p class="modal-text">Birthday: ${data.dob.date.substring(0, 10)}</p>
+    </div>
+</div>`;
+    return modalHTML
+}
 
 
 
