@@ -22,7 +22,7 @@ searchContainer.insertAdjacentHTML('beforeend', searchHTML)
 
 
 //FETCH
-fetch('https://randomuser.me/api/?page=1&results=12&seed=abc')
+fetch('https://randomuser.me/api/?results=12')
     .then(checkStatus)
     .then(response => response.json())
     .then(data => {

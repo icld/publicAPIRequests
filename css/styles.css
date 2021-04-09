@@ -28,7 +28,8 @@ header {
 }
 
 header h1 {
-    font-size: 1.25em;
+    font-size: 1.5em;
+    text-shadow: 1px 1PX grey;
     color: rgba(50, 50, 50, 0.9);
     margin-top: 35px;
     transition: transform .4s ease;
@@ -40,6 +41,8 @@ header h1.ready {
 }
 
 .search-input {
+    box-shadow: .5px .5PX grey;
+    ;
     padding: 0.4rem 1rem;
     border: 1px solid rgba(200, 200, 200, 0.9);
     border-radius: 0.25rem 0 0 0.25rem;
@@ -53,6 +56,7 @@ header h1.ready {
 }
 
 .search-submit {
+    box-shadow: .5px .5PX grey;
     cursor: pointer;
     height: 33px;
     background: rgba(245, 245, 245, 0.9);
@@ -91,6 +95,8 @@ header h1.ready {
     max-width: 360px;
     margin: 10px 10px 20px;
     padding: 10px;
+    box-shadow: 1px 1px grey;
+    ;
     background: rgba(245, 245, 245, 0.9);
     border-radius: 0.25em;
     border: 1px solid rgba(50, 50, 50, 0.3);
@@ -102,6 +108,7 @@ header h1.ready {
     width: 95px;
     margin: 10px 15px auto 10px;
     border-radius: 50%;
+    border: 1px solid gray;
 }
 
 .card-info-container {
@@ -113,6 +120,7 @@ header h1.ready {
 }
 
 .card-text {
+    text-shadow: .3px .3PX grey;
     font-size: 0.9em;
     color: rgba(50, 50, 50, 0.7);
     margin: 7px auto;
