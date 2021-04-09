@@ -117,9 +117,9 @@ function modalHTML(data) {
         <p class="modal-text">${data.email}</p>
         <p class="modal-text cap">${data.location.city}</p>
         <hr>
-        <p class="modal-text">${data.phone}</p>
+        <p class="modal-text">${formatPhone(data.phone)}</p>
         <p class="modal-text">${data.location.street.number} ${data.location.street.name} , ${data.location.city}, ${data.location.state} ${data.location.postcode}</p>
-        <p class="modal-text">Birthday: ${data.dob.date.substring(0, 10)}</p>
+        <p class="modal-text">Birthday: ${formatDOB(data.dob.date)}</p>
     </div>
 </div>`;
     // if (click % 2 == 0) {
@@ -132,8 +132,19 @@ function modalHTML(data) {
     return modalHTML
 }
 
+function formatPhone(oldPhone) {
+    const cleaned = ('' + oldPhone).replace(/\D/g, '');
+    const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+    if (match) {
+        return '(' + match[1] + ') ' + match[2] + '-' + match[3];
+    }
+    return null;
+}
 
-
+function formatDOB(date) {
+    const dob = new Date(date)
+    return `${dob.getMonth()}/${dob.getDate()}/${dob.getFullYear()}`
+}
 
 
 
