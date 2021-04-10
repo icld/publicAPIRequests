@@ -109,6 +109,11 @@ header h1.ready {
     margin: 10px 15px auto 10px;
     border-radius: 50%;
     border: 1px solid gray;
+    transition: all 0.3s ease;
+}
+
+.card-img:hover {
+    border: 1px solid salmon
 }
 
 .card-info-container {
@@ -119,12 +124,20 @@ header h1.ready {
     margin: 20px auto 0;
 }
 
+.card-name:hover {
+    text-shadow: .3px .3PX salmon;
+}
+
 .card-text {
     text-shadow: .3px .3PX grey;
     font-size: 0.9em;
     color: rgba(50, 50, 50, 0.7);
     margin: 7px auto;
     transition: .4s ease-out;
+}
+
+.card-text:hover {
+    text-shadow: .3px .3PX salmon;
 }
 
 .cap {
@@ -270,7 +283,7 @@ header h1.ready {
 @media (min-width: 1024px) {
     .card:hover {
         background: rgba(255, 255, 255, 1);
-        border: 1px solid rgba(50, 50, 50, 0.9);
+        border: 1px solid rgba(223, 93, 93, 0.9);
     }
     .card:hover .card-text {
         color: rgba(25, 25, 25, 1);
