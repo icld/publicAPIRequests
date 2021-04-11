@@ -23,6 +23,7 @@ const submit = document.querySelector('#search-submit')
 const searchInput = document.querySelector('#search-input')
 
 searchContainer.addEventListener('submit', searchFilter)
+searchInput.addEventListener('keyup', searchFilter)
 
 function searchFilter() {
     const cards = document.querySelectorAll('.card')
