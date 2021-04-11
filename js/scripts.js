@@ -107,7 +107,7 @@ gallery.addEventListener('click', e => {
 })
 
 
-let cardNumber;
+
 
 
 body.addEventListener('click', e => {
@@ -116,7 +116,7 @@ body.addEventListener('click', e => {
     const cards = document.querySelectorAll('.card')
     const modal = document.querySelector('.modal')
     const modalName = modal.querySelector('.modal-name').textContent.toLowerCase()
-
+    let cardNumber;
 
     console.log(e.target)
     if (e.target === prev) {
@@ -125,20 +125,24 @@ body.addEventListener('click', e => {
             console.log(cardNumber)
             const cardName = cards[i].querySelector('#name').textContent.toLowerCase()
             const modalContainer = document.querySelector('.modal-container')
-            if (cardName === modalName && cardNumber > 0) {
 
-
-                modalContainer.remove()
-                generateModal(profileData[cardNumber - 1])
-                if (cardNumber === 0) {
-
-                    prev.disabled = true
-                    prev.style.backgroundColor = 'gray'
+            if (cardName === modalName) {
+                if (cardNumber > 2) {
+                    modalContainer.remove()
+                    generateModal(profileData[cardNumber - 1])
+                } else if (cardNumber === 1) {
+                    modalContainer.remove()
+                    generateModal(profileData[0])
+                    document.getElementById('modal-prev-btn').disabled = true
                 }
-                // } else if ()
             }
+
+
         }
+        // else if ()
+
     }
+
 })
 
 
