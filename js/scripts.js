@@ -22,21 +22,23 @@ searchContainer.insertAdjacentHTML('beforeend', searchHTML)
 const submit = document.querySelector('#search-submit')
 const searchInput = document.querySelector('#search-input')
 
-searchContainer.addEventListener('submit', e => {
+searchContainer.addEventListener('submit', searchFilter)
+
+function searchFilter() {
     const cards = document.querySelectorAll('.card')
-    console.log(cards)
     cards.forEach(card => {
-        const cardName = card.querySelector('h3').textContent
-        console.log(`cardname is ${cardName}`)
+        const cardName = card.querySelector('h3').textContent.toLowerCase()
         const userInput = searchInput.value.toLowerCase()
-        if (cardName.includes(userInput)) {
-            console.log('match')
+
+        if (cardName.includes(userInput) || userInput.length === 0) {
+            console.log(`${cardName} is a match with input: ${userInput}`)
+            card.style.display = ''
         } else {
             card.style.display = 'none'
         }
     })
 }
-)
+
 
 
 
