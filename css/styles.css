@@ -215,6 +215,11 @@ header h1.ready {
     border: 1px solid rgba(50, 50, 50, 0.3);
 }
 
+.modal-prev-btn:disabled {
+    cursor: none;
+    background-color: slategrey;
+}
+
 .modal-prev-btn:hover {
     border: 1.1px solid salmon
 }

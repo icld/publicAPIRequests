@@ -2,8 +2,8 @@ const body = document.querySelector('body')
 const h1 = document.querySelector('h1')
 h1.classList.add('ready')
 setTimeout(() => h1.classList.remove('ready'), 1000)
-const modalContainer = document.createElement('div')
-body.appendChild(modalContainer)
+// const modalContainer = document.createElement('div')
+// body.appendChild(modalContainer)
 const gallery = document.querySelector('#gallery')
 let profileData = []
 let click = 0
@@ -88,7 +88,6 @@ gallery.addEventListener('click', e => {
     const card = e.target.closest('.card')
 
 
-
     if (e.target !== parent) {
         click++
         console.log(click)
@@ -101,39 +100,54 @@ gallery.addEventListener('click', e => {
                 console.log(profile)
                 generateModal(profile)
             }
+
         })
+
     }
 })
 
 
-if (modalContainer.style.display === 'block') {
+let cardNumber;
+
+
+body.addEventListener('click', e => {
+    const prev = document.getElementById('modal-prev-btn')
+    const next = document.getElementById('modal-next-btn')
+    const cards = document.querySelectorAll('.card')
     const modal = document.querySelector('.modal')
-    const prev = document.querySelector('#modal-prev-btn')
-    const next = document.querySelector('#modal-next-btn')
-    console.log('squeek')
-    prev.addEventListener('click', e => {
-        console.log('squeek')
-        const cards = document.querySelectorAll('.card')
-        const modalName = modal.querySelector('.modal-name').textContent.toLowerCase()
-        let cardNumber;
+    const modalName = modal.querySelector('.modal-name').textContent.toLowerCase()
+
+
+    console.log(e.target)
+    if (e.target === prev) {
         for (let i = 0; i < cards.length; i++) {
+            cardNumber = i;
+            console.log(cardNumber)
             const cardName = cards[i].querySelector('#name').textContent.toLowerCase()
-            if (cardName === modalName) {
-                cardNumber = i + 1;
-                console.log(cardName)
-                console.log(cardNumber)
+            const modalContainer = document.querySelector('.modal-container')
+            if (cardName === modalName && cardNumber > 0) {
+
+
+                modalContainer.remove()
+                generateModal(profileData[cardNumber - 1])
+                if (cardNumber === 0) {
+
+                    prev.disabled = true
+                    prev.style.backgroundColor = 'gray'
+                }
+                // } else if ()
             }
-
         }
+    }
+})
 
-    })
 
-}
+
 
 
 
 function generateModal(data) {
-    modalContainer.insertAdjacentHTML('beforeend', modalHTML(data))
+    gallery.insertAdjacentHTML('afterend', modalHTML(data))
     showModal()
     modalRemove()
 }
@@ -157,7 +171,6 @@ function modalRemove() {
     const modalContainer = document.querySelector('.modal-container')
     const modal = document.querySelector('.modal')
     button.addEventListener('click', e => {
-        console.log('remove me')
         modal.classList.add('ready')
         modalContainer.classList.add('ready')
         setTimeout(() => modalContainer.remove(), 300)
@@ -180,8 +193,8 @@ function modalHTML(data) {
         <p class="modal-text">Birthday: ${formatDOB(data.dob.date)}</p>
     </div>
     <div class='modal-bottom-btn-container'>
-    <button type="button" id="modal-prev-btn" class="modal-prev-btn"><strong>prev</strong></button>
-    <button type="button" id="modal-next-btn" class="modal-next-btn"><strong>next</strong></button>
+    <button type="button" id="modal-prev-btn" class="modal-prev-btn">prev</button>
+    <button type="button" id="modal-next-btn" class="modal-next-btn">next</button>
    </div>
     </div>`;
     // if (click % 2 == 0) {
@@ -190,7 +203,6 @@ function modalHTML(data) {
     //     container.classList.remove('ready')
     //     container.classList.add('readyDown')
     // }
-
     return modalHTML
 }
 
