@@ -51,7 +51,7 @@ fetch('https://randomuser.me/api/?results=12')
         profileData = data.results
         console.log(profileData);
         generateCard(profileData);
-        // generateModal(profileData);
+
     })
     .catch(error => console.log('Looks like there was a problem', error))
 
@@ -106,17 +106,50 @@ gallery.addEventListener('click', e => {
 })
 
 
+if (modalContainer.style.display === 'block') {
+    const modal = document.querySelector('.modal')
+    const prev = document.querySelector('#modal-prev-btn')
+    const next = document.querySelector('#modal-next-btn')
+    console.log('squeek')
+    prev.addEventListener('click', e => {
+        console.log('squeek')
+        const cards = document.querySelectorAll('.card')
+        const modalName = modal.querySelector('.modal-name').textContent.toLowerCase()
+        let cardNumber;
+        for (let i = 0; i < cards.length; i++) {
+            const cardName = cards[i].querySelector('#name').textContent.toLowerCase()
+            if (cardName === modalName) {
+                cardNumber = i + 1;
+                console.log(cardName)
+                console.log(cardNumber)
+            }
+
+        }
+
+    })
+
+}
+
+
+
 function generateModal(data) {
     modalContainer.insertAdjacentHTML('beforeend', modalHTML(data))
-    addModal()
+    showModal()
     modalRemove()
 }
 
-function addModal() {
+
+
+
+
+function showModal() {
     const modal = document.querySelector('.modal')
     const container = document.querySelector('.modal-container')
+    container.style.display = 'block'
     setTimeout(() => modal.classList.remove('ready'), 200)
     setTimeout(() => container.classList.remove('ready'), 200)
+
+
 }
 
 function modalRemove() {
@@ -146,7 +179,11 @@ function modalHTML(data) {
         <p class="modal-text">${data.location.street.number} ${data.location.street.name} , ${data.location.city}, ${data.location.state} ${data.location.postcode}</p>
         <p class="modal-text">Birthday: ${formatDOB(data.dob.date)}</p>
     </div>
-</div>`;
+    <div class='modal-bottom-btn-container'>
+    <button type="button" id="modal-prev-btn" class="modal-prev-btn"><strong>prev</strong></button>
+    <button type="button" id="modal-next-btn" class="modal-next-btn"><strong>next</strong></button>
+   </div>
+    </div>`;
     // if (click % 2 == 0) {
     //     const container = document.querySelector('.modal', 'ready')
     //     console.log(container)
