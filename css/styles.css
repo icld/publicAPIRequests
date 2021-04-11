@@ -236,6 +236,11 @@ header h1.ready {
     border: 1px solid rgba(50, 50, 50, 0.3);
 }
 
+.modal-next-btn:disabled {
+    cursor: none;
+    background-color: slategrey;
+}
+
 .modal-next-btn:hover {
     border: 1.1px solid salmon
 }

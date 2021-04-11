@@ -27,6 +27,7 @@ searchInput.addEventListener('keyup', searchFilter)
 
 function searchFilter() {
     const cards = document.querySelectorAll('.card')
+    let blankCard = 0
     cards.forEach(card => {
         const cardName = card.querySelector('h3').textContent.toLowerCase()
         const userInput = searchInput.value.toLowerCase()
@@ -36,6 +37,15 @@ function searchFilter() {
             card.style.display = ''
         } else {
             card.style.display = 'none'
+            blankCard += 1
+        }
+        if (blankCard === 12) {
+            const html =
+                `<div class="error-message">
+                <strong style="font-size:100px">No Users Found &#129409</strong>
+            </div>`
+            body.insertAdjacentHTML('beforeend', html)
+            console.log('all blank')
         }
     })
 }
