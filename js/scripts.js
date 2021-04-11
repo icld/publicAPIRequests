@@ -118,16 +118,13 @@ body.addEventListener('click', e => {
     const modalName = modal.querySelector('.modal-name').textContent.toLowerCase()
     let cardNumber;
 
-    console.log(e.target)
     if (e.target === prev) {
         for (let i = 0; i < cards.length; i++) {
             cardNumber = i;
-            console.log(cardNumber)
             const cardName = cards[i].querySelector('#name').textContent.toLowerCase()
             const modalContainer = document.querySelector('.modal-container')
-
             if (cardName === modalName) {
-                if (cardNumber > 2) {
+                if (cardNumber > 1) {
                     modalContainer.remove()
                     generateModal(profileData[cardNumber - 1])
                 } else if (cardNumber === 1) {
@@ -136,10 +133,25 @@ body.addEventListener('click', e => {
                     document.getElementById('modal-prev-btn').disabled = true
                 }
             }
-
-
         }
-        // else if ()
+    }
+
+    else if (e.target === next) {
+        for (let i = 0; i < cards.length; i++) {
+            cardNumber = i;
+            const cardName = cards[i].querySelector('#name').textContent.toLowerCase()
+            const modalContainer = document.querySelector('.modal-container')
+            if (cardName === modalName) {
+                if (cardNumber < 10) {
+                    modalContainer.remove()
+                    generateModal(profileData[cardNumber + 1])
+                } else if (cardNumber === 10) {
+                    modalContainer.remove()
+                    generateModal(profileData[11])
+                    document.getElementById('modal-next-btn').disabled = true
+                }
+            }
+        }
 
     }
 
