@@ -19,6 +19,25 @@ const searchHTML = `<form action="#" method="get">
 <input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">
 </form>`
 searchContainer.insertAdjacentHTML('beforeend', searchHTML)
+const submit = document.querySelector('#search-submit')
+const searchInput = document.querySelector('#search-input')
+
+searchContainer.addEventListener('submit', e => {
+    const cards = document.querySelectorAll('.card')
+    console.log(cards)
+    cards.forEach(card => {
+        const cardName = card.querySelector('h3').textContent
+        console.log(`cardname is ${cardName}`)
+        const userInput = searchInput.value.toLowerCase()
+        if (cardName.includes(userInput)) {
+            console.log('match')
+        } else {
+            card.style.display = 'none'
+        }
+    })
+}
+)
+
 
 
 //FETCH
@@ -64,10 +83,13 @@ const galleryCards = document.getElementsByClassName("card card")
 gallery.addEventListener('click', e => {
     const parent = gallery
     const card = e.target.closest('.card')
-    const userEmail = card.querySelector('.card-text').textContent
-    click++
-    console.log(click)
+
+
+
     if (e.target !== parent) {
+        click++
+        console.log(click)
+        const userEmail = card.querySelector('.card-text').textContent
         console.log(card)
         console.log(userEmail)
         profileData.forEach(profile => {
