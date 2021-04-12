@@ -14,7 +14,7 @@ This project builds an app for a fictional startup.  It randomly generates emplo
 * hover effects
 * disabled buttons
 * error messages
-
+* hidden search
 
 ## GIT HUB
 - repository location https://github.com/icld/publicAPIRequests.git
