@@ -22,6 +22,7 @@ searchContainer.addEventListener('submit', searchFilter)
 searchInput.addEventListener('keyup', searchFilter)
 
 function searchFilter() {
+    removeError()
     const cards = document.querySelectorAll('.card')
     let blankCard = 0
     cards.forEach(card => {
@@ -44,9 +45,16 @@ function searchFilter() {
             console.log('all blank')
         }
     })
+
+
 }
 
-
+const removeError = () => {
+    if (body.textContent.includes('No Users Found')) {
+        const errorMessage = document.querySelector('.error-message')
+        errorMessage.remove()
+    }
+}
 
 
 //FETCH
