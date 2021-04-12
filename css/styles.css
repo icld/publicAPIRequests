@@ -28,7 +28,7 @@ header {
 }
 
 header h1 {
-    font-size: 1.5em;
+    font-size: 1.3em;
     text-shadow: 1px 1PX grey;
     color: rgba(50, 50, 50, 0.9);
     margin-top: 35px;
@@ -42,13 +42,19 @@ header h1.ready {
 
 .search-input {
     box-shadow: .5px .5PX grey;
-    ;
     padding: 0.4rem 1rem;
     border: 1px solid rgba(200, 200, 200, 0.9);
     border-radius: 0.25rem 0 0 0.25rem;
+    /* width: 200px; */
     max-width: 20rem;
-    transition: .4s ease-out;
+    transition: max-width 1s ease, opacity 0.01s ease;
     outline: none;
+}
+
+.search-input.ready {
+    opacity: 0;
+    max-width: 0rem;
+    transition: max-width 1s ease, opacity 0.01s ease;
 }
 
 .search-input:active, .search-input:hover, .search-input:focus {
@@ -240,7 +246,6 @@ header h1.ready {
 .modal-next-btn:disabled {
     cursor: none;
     background-color: slategrey;
-    pointer-events: none;
 }
 
 .modal-next-btn:hover {

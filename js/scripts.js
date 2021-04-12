@@ -10,6 +10,7 @@ let profileData = []
 const searchContainer = document.querySelector('.search-container')
 searchContainer.insertAdjacentHTML('beforeend', searchHTML)
 const searchInput = document.querySelector('#search-input')
+const submit = document.querySelector('.search-submit')
 
 
 // EVENT LISTENERS
@@ -17,6 +18,8 @@ searchContainer.addEventListener('submit', searchFilter)
 searchInput.addEventListener('keyup', searchFilter)
 body.addEventListener('click', handleModalBtns)
 gallery.addEventListener('click', handleCardClick)
+submit.addEventListener('click', toggleSearch)
+
 
 //FETCH
 fetch('https://randomuser.me/api/?results=12')
@@ -31,6 +34,14 @@ fetch('https://randomuser.me/api/?results=12')
 
 
 // FUNCTIONS
+
+// hidden search handler 
+function toggleSearch(e) {
+    searchInput.classList.toggle('ready')
+    searchInput.focus()
+}
+
+// check fetch response for, and produce error if rejected
 function checkStatus(response) {
     if (response.ok) {
         return Promise.resolve(response);
@@ -39,12 +50,14 @@ function checkStatus(response) {
     }
 }
 
+// creates cards from returned response data
 function generateCard(data) {
     data.forEach(profile => {
         gallery.insertAdjacentHTML('beforeend', galleryHTML(profile));
     });
 }
 
+// checks search input against available cards. hides non-matches. produces error
 function searchFilter() {
     removeError()
     const cards = document.querySelectorAll('.card')
@@ -66,6 +79,7 @@ function searchFilter() {
     })
 }
 
+// handles error message for search, resets h1
 function removeError() {
     if (body.textContent.includes('No Users Found')) {
         const errorMessage = document.querySelector('.error-message')
@@ -74,6 +88,7 @@ function removeError() {
     }
 }
 
+// creates modal on card click.  manages modal button style and disabled
 function handleCardClick(e) {
     const parent = gallery
     const card = e.target.closest('.card')
@@ -93,6 +108,7 @@ function handleCardClick(e) {
     }
 }
 
+// manage modal next/prev button, and makes appropriate modals 
 function handleModalBtns(e) {
     if (gallery.nextElementSibling.className === 'modal-container') {
         const prev = document.getElementById('modal-prev-btn')
@@ -147,6 +163,7 @@ function handleModalBtns(e) {
     }
 }
 
+// make modal 
 function generateModal(data) {
     gallery.insertAdjacentHTML('afterend', modalHTML(data))
     showModal()
@@ -154,6 +171,7 @@ function generateModal(data) {
 
 }
 
+// handle modal animation
 function showModal() {
     const modal = document.querySelector('.modal')
     const container = document.querySelector('.modal-container')
@@ -162,6 +180,7 @@ function showModal() {
     setTimeout(() => container.classList.remove('ready'), 200)
 }
 
+// handle modal animation 
 function modalRemove() {
     const button = document.getElementById('modal-close-btn')
     const modalContainer = document.querySelector('.modal-container')
@@ -172,6 +191,7 @@ function modalRemove() {
         setTimeout(() => modalContainer.remove(), 300)
     })
 }
+
 
 function formatPhone(oldPhone) {
     const cleaned = ('' + oldPhone).replace(/\D/g, '');

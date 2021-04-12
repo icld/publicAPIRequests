@@ -4,11 +4,12 @@ Treehouse Full Stack Javascript Techdegree
 Unit 5 project 
 Public API Requests */
 
-
+//  animate h1
 const h1 = document.querySelector('h1')
 h1.classList.add('ready')
 setTimeout(() => h1.classList.remove('ready'), 1000)
 
+// html for card creation
 function galleryHTML(profile) {
     const galleryHTML = `<div class="card">
 <div class="card-img-container">
@@ -23,6 +24,7 @@ function galleryHTML(profile) {
     return galleryHTML
 }
 
+// html for modal creation 
 function modalHTML(data) {
     const modalHTML = `<div class="modal-container ready">
 <div class="modal ready">
@@ -46,13 +48,14 @@ function modalHTML(data) {
     return modalHTML
 }
 
+// html for search creation 
 const searchHTML = `<form action="#" method="get">
-<input type="search" id="search-input" class="search-input" placeholder="Search...">
+<input type="search" id="search-input" class="search-input ready" placeholder="Search...">
 <input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">
 </form>`
 
 
-
+// html for error message
 const errorHTML = `<div class="error-message">
 <strong style="font-size:100px">No Users Found &#129409</strong>
 </div>`
