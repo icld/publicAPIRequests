@@ -218,6 +218,7 @@ header h1.ready {
 .modal-prev-btn:disabled {
     cursor: none;
     background-color: slategrey;
+    pointer-events: none;
 }
 
 .modal-prev-btn:hover {
@@ -239,6 +240,7 @@ header h1.ready {
 .modal-next-btn:disabled {
     cursor: none;
     background-color: slategrey;
+    pointer-events: none;
 }
 
 .modal-next-btn:hover {

@@ -97,7 +97,6 @@ gallery.addEventListener('click', e => {
     const parent = gallery
     const card = e.target.closest('.card')
 
-
     if (e.target !== parent) {
         click++
         console.log(click)
@@ -105,16 +104,22 @@ gallery.addEventListener('click', e => {
         console.log(card)
         console.log(userEmail)
         profileData.forEach(profile => {
-            // const newProf = profile
             if (profile.email === userEmail) {
                 console.log(profile)
                 generateModal(profile)
+                if (profile === profileData[0]) {
+                    document.getElementById('modal-prev-btn').disabled = true
+                }
+                if (profile === profileData[11]) {
+                    document.getElementById('modal-next-btn').disabled = true
+                }
             }
-
         })
-
     }
 })
+
+
+
 
 
 
@@ -162,9 +167,7 @@ body.addEventListener('click', e => {
                 }
             }
         }
-
     }
-
 })
 
 
@@ -176,6 +179,7 @@ function generateModal(data) {
     gallery.insertAdjacentHTML('afterend', modalHTML(data))
     showModal()
     modalRemove()
+
 }
 
 
