@@ -81,7 +81,6 @@ function handleCardClick(e) {
         const userEmail = card.querySelector('.card-text').textContent
         profileData.forEach(profile => {
             if (profile.email === userEmail) {
-                console.log(profile)
                 generateModal(profile)
                 if (profile === profileData[0]) {
                     document.getElementById('modal-prev-btn').disabled = true
@@ -180,7 +179,6 @@ function formatPhone(oldPhone) {
     if (match) {
         return '(' + match[1] + ') ' + match[2] + '-' + match[3];
     }
-    // return null;
 }
 
 function formatDOB(date) {
