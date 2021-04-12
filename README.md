@@ -1,5 +1,5 @@
 # publicAPIRequests
-# unit4-project-oop-game
+# unit4-publicAPITRequests
  
 <p align="center"> Authored by Ian Lyles</p>
 <p align="center">Updated on April 12th, 2021</p>
