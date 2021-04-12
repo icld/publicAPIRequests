@@ -2,8 +2,6 @@ const body = document.querySelector('body')
 const h1 = document.querySelector('h1')
 h1.classList.add('ready')
 setTimeout(() => h1.classList.remove('ready'), 1000)
-// const modalContainer = document.createElement('div')
-// body.appendChild(modalContainer)
 const gallery = document.querySelector('#gallery')
 let profileData = []
 let click = 0
@@ -41,41 +39,21 @@ function searchFilter() {
                 `<div class="error-message">
                 <strong style="font-size:100px">No Users Found &#129409</strong>
             </div>`
-            body.insertAdjacentHTML('beforeend', html)
             console.log('all blank')
+            body.insertAdjacentHTML('beforeend', html)
+            h1.textContent = 'Whoopsy!'
         }
     })
-
-
 }
 
 const removeError = () => {
     if (body.textContent.includes('No Users Found')) {
         const errorMessage = document.querySelector('.error-message')
         errorMessage.remove()
+        h1.textContent = 'AWESOME STARTUP EMPLOYEE DIRECTORY'
     }
 }
 
-
-//FETCH
-fetch('https://randomuser.me/api/?results=12')
-    .then(checkStatus)
-    .then(response => response.json())
-    .then(data => {
-        profileData = data.results
-        console.log(profileData);
-        generateCard(profileData);
-
-    })
-    .catch(error => console.log('Looks like there was a problem', error))
-
-function checkStatus(response) {
-    if (response.ok) {
-        return Promise.resolve(response);
-    } else {
-        return Promise.reject(new Error(response.statusText))
-    }
-}
 
 function generateCard(data) {
     data.forEach(profile => {
@@ -121,13 +99,6 @@ gallery.addEventListener('click', e => {
         })
     }
 })
-
-
-
-
-
-
-
 
 body.addEventListener('click', e => {
     if (gallery.nextElementSibling.className === 'modal-container') {
@@ -177,20 +148,12 @@ body.addEventListener('click', e => {
 })
 
 
-
-
-
-
 function generateModal(data) {
     gallery.insertAdjacentHTML('afterend', modalHTML(data))
     showModal()
     modalRemove()
 
 }
-
-
-
-
 
 function showModal() {
     const modal = document.querySelector('.modal')
@@ -257,6 +220,24 @@ function formatDOB(date) {
 }
 
 
+//FETCH
+fetch('https://randomuser.me/api/?results=12')
+    .then(checkStatus)
+    .then(response => response.json())
+    .then(data => {
+        profileData = data.results
+        console.log(profileData);
+        generateCard(profileData);
+    })
+    .catch(error => console.log('Looks like there was a problem', error))
+
+function checkStatus(response) {
+    if (response.ok) {
+        return Promise.resolve(response);
+    } else {
+        return Promise.reject(new Error(response.statusText))
+    }
+}
 
 
 
