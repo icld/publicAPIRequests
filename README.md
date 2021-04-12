@@ -5,7 +5,7 @@
 <p align="center">Updated on April 12th, 2021</p>
 
 ## Detailed Description
-This project builds an app for a fictional startup.  It randomly generates employee cards, pulling employee information from a random a fictional employee database.  
+This project builds an app for a fictional startup.  It randomly generates employee cards, pulling employee information from a fictional employee database.  
 
 ## Notes Regarding Exceeds Expectations
 ### Style Changes 
