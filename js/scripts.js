@@ -8,10 +8,6 @@ const gallery = document.querySelector('#gallery')
 let profileData = []
 let click = 0
 
-
-
-
-
 // SEARCH
 const searchContainer = document.querySelector('.search-container')
 const searchHTML = `<form action="#" method="get">
@@ -126,44 +122,46 @@ gallery.addEventListener('click', e => {
 
 
 body.addEventListener('click', e => {
-    const prev = document.getElementById('modal-prev-btn')
-    const next = document.getElementById('modal-next-btn')
-    const cards = document.querySelectorAll('.card')
-    const modal = document.querySelector('.modal')
-    const modalName = modal.querySelector('.modal-name').textContent.toLowerCase()
-    let cardNumber;
+    if (gallery.nextElementSibling.className === 'modal-container') {
+        const prev = document.getElementById('modal-prev-btn')
+        const next = document.getElementById('modal-next-btn')
+        const cards = document.querySelectorAll('.card')
+        const modal = document.querySelector('.modal')
+        const modalName = modal.querySelector('.modal-name').textContent.toLowerCase()
+        let cardNumber;
 
-    if (e.target === prev) {
-        for (let i = 0; i < cards.length; i++) {
-            cardNumber = i;
-            const cardName = cards[i].querySelector('#name').textContent.toLowerCase()
-            const modalContainer = document.querySelector('.modal-container')
-            if (cardName === modalName) {
-                if (cardNumber > 1) {
-                    modalContainer.remove()
-                    generateModal(profileData[cardNumber - 1])
-                } else if (cardNumber === 1) {
-                    modalContainer.remove()
-                    generateModal(profileData[0])
-                    document.getElementById('modal-prev-btn').disabled = true
+        if (e.target === prev) {
+            for (let i = 0; i < cards.length; i++) {
+                cardNumber = i;
+                const cardName = cards[i].querySelector('#name').textContent.toLowerCase()
+                const modalContainer = document.querySelector('.modal-container')
+                if (cardName === modalName) {
+                    if (cardNumber > 1) {
+                        modalContainer.remove()
+                        generateModal(profileData[cardNumber - 1])
+                    } else if (cardNumber === 1) {
+                        modalContainer.remove()
+                        generateModal(profileData[0])
+                        document.getElementById('modal-prev-btn').disabled = true
+                    }
                 }
             }
         }
-    }
 
-    else if (e.target === next) {
-        for (let i = 0; i < cards.length; i++) {
-            cardNumber = i;
-            const cardName = cards[i].querySelector('#name').textContent.toLowerCase()
-            const modalContainer = document.querySelector('.modal-container')
-            if (cardName === modalName) {
-                if (cardNumber < 10) {
-                    modalContainer.remove()
-                    generateModal(profileData[cardNumber + 1])
-                } else if (cardNumber === 10) {
-                    modalContainer.remove()
-                    generateModal(profileData[11])
-                    document.getElementById('modal-next-btn').disabled = true
+        else if (e.target === next) {
+            for (let i = 0; i < cards.length; i++) {
+                cardNumber = i;
+                const cardName = cards[i].querySelector('#name').textContent.toLowerCase()
+                const modalContainer = document.querySelector('.modal-container')
+                if (cardName === modalName) {
+                    if (cardNumber < 10) {
+                        modalContainer.remove()
+                        generateModal(profileData[cardNumber + 1])
+                    } else if (cardNumber === 10) {
+                        modalContainer.remove()
+                        generateModal(profileData[11])
+                        document.getElementById('modal-next-btn').disabled = true
+                    }
                 }
             }
         }
