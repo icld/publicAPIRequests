@@ -1,18 +1,46 @@
 # publicAPIRequests
+# unit4-project-oop-game
  
-Project Overview
+<p align="center"> Authored by Ian Lyles</p>
+<p align="center">Updated on April 12th, 2021</p>
 
-Communicating with APIs allows you to work with microservices and with vast databases to build useful tools and relevant information quickly and easily. You can build utilities, games, infographics, and more. You can also integrate, display, and analyze social media and large data sets without having to create and curate them yourself.
+## Detailed Description
+This project builds an app for a fictional startup.  It randomly generates employee cards, pulling employee information from a random a fictional employee database.  
 
-For this project, you'll build an app for a fictional company called Awesome Startup, a distributed company with remote employees working all over the world. They need a smart way for employees to share contact information with each other.
+## Notes Regarding Exceeds Expectations
+### Style Changes 
+* h1 and modal card animations
+* text shadow, and box shadow
+* hover effects
+* disabled buttons
+* error messages
 
-You’ll use the Random User Generator API (https://randomuser.me/) to grab information for 12 random “employees,” and use that data to build a prototype for an Awesome Startup employee directory.
 
-You’ll request a JSON object from the API and parse the data so that 12 employees are listed in a grid with their thumbnail image, full name, email, and location. Clicking the employee’s image or name will open a modal window with more detailed information, such as the employee’s birthday and address.
+## GIT HUB
+- repository location https://github.com/icld/publicAPIRequests.git
 
-You may use jQuery with this project, but other frameworks, libraries or plugins are not permitted. While there are plugins that can help with the creation of a gallery and modal setup, it is important for developers to be able to understand how tools like that work "under the hood". So you'll need to write all your own JS or jQuery to create the necessary functionality for this project.
+## Support and contact details
+email Ian Lyles @ <ian@icldesign.com>
 
-After building this project, you'll have yet another excellent portfolio piece to show off and demonstrate your incredible skills, which will now include working with public APIs, making API requests, and asynchronously handling the data that will be returned from your requests and displayed in an app.
+## Technologies Used
 
-Instructions 
-https://teamtreehouse.com/projects/public-api-requests#instructions
+* VisualStudio Code
+* Git
+* GitHub
+* JavaScript
+* Json
+
+### License
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE..
+
+Copyright (c) 2020 **Ian Cameron Lyles**
+
+
+
+
+
+
